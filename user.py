@@ -24,15 +24,28 @@ class User:
         '''
         User.user_list.remove(self)
 
-    def test_find_user(self):
-        """
-        check whether the user account exists in the user list
-        """
-        self.found_user = User.find_user("tushy")
+    @classmethod
+    def find_user(cls, username):
+        """Find user by username"""
+        for user in cls.user_list:
+            if user.username == username:
+                return username
+    @classmethod
+    def user_exist(cls, username):
+        """Check if user exists"""
+        for user in cls.user_list:
+            if user.username == username:
+                return True
+        return False
 
-    def test_user_exists(self):
+    @classmethod
+    def check_user(cls, username, password):
         """
-        check whether the user account exists in the user list
+        Check if user exists and if password is correct
         """
-        self.found_user = User.user_exist("tushy")
+        user = cls.find_user(username)
+        if user and user.password == password:
+            return True
+        return False
+
 

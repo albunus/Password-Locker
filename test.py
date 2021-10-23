@@ -40,30 +40,19 @@ class TestUser(unittest.TestCase):
         self.new_user.delete_user()
         self.assertEqual(len(User.user_list), 0)
 
-    @classmethod
-    def find_user(cls, username):
-        """Find user by username"""
-        for user in cls.user_list:
-            if user.username == username:
-                return user
+   
 
-    @classmethod
-    def user_exist(cls, username):
-        #Check if user exists
-        for user in cls.user_list:
-            if user.username == username:
-                return True
-            return False
+    def test_find_user(self):
+        """
+        check whether the user exists in the user list
+        """
+        self.found_username = User.find_user("tushy")
+    def test_user_exists(self):
+            """
+        check whether the user account exists in the user list
+        """
+            self.found_user = User.user_exist("tushy")
 
-    @classmethod
-    def check_user(cls, username, password):
-        """
-        Check if user exists and if password is correct
-        """
-        user = cls.find_user(username)
-        if user and user.password == password:
-            return True
-        return False
 
 
 
