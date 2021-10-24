@@ -24,3 +24,13 @@ class Credentials():
         method that will delete platforms details
         '''
         Credentials.platform_details.remove(self)
+        
+    @classmethod
+    def find_by_social_platform_account(cls, social_platform_account):
+        '''
+            Method that takes in a account_platform and returns a credentials that matches that account_platform.
+        '''
+        for credentials in cls.platform_details:
+            if credentials.social_platform_account == social_platform_account:
+                return credentials
+        return False
