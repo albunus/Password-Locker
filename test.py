@@ -86,6 +86,13 @@ class TestCredentials(unittest.TestCase):
         self.assertEqual(self.new_credentials.social_platforms_accounts, 'twitter')
         self.assertEqual(self.new_credentials.user_accounts_username, 'aly')
         self.assertEqual(self.new_credentials.user_accounts_password, 'tush')
+        
+    def test_save_credentials(self):
+        '''
+        confirm whether platform details are being saved
+        '''
+        self.new_credentials.save_credentials()
+        self.assertEqual(len(Credentials.platform_details),1)
 
 
 
