@@ -59,7 +59,7 @@ class TestUser(unittest.TestCase):
         '''
         validate user accounts credentials
         '''
-        self.check_user = User.check_user ("tushy","1234")
+        self.check_User = User.check_user ("tushy","1234")
 
         # testing for the user class ends here
 

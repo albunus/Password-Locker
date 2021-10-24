@@ -1,5 +1,8 @@
-import string
+
 import random
+import string
+
+
 class Credentials():
     '''
     A class tha generates users list credentials
@@ -43,6 +46,15 @@ class Credentials():
             returns the credentials list(all credentials)
         """
         return cls.platform_details
+    @classmethod
+    def generate_password(cls, password_length):
+        """
+        generate random password for a user creating a new account int the user_credentials[]
+        """
+        tush = string.ascii_letters + string.digits
+        password = ''.join(random.choice(tush)
+                        for i in range(password_length))
+        return password
 
 
 
