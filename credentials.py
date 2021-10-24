@@ -4,3 +4,5 @@ class Credentials:
     '''
 
     Accounts_details = []
+    
+    def _init_(self, social_platforms_accounts, user_account_username, user_account_password):
