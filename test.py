@@ -1,4 +1,5 @@
 import unittest
+from unittest.case import TestCase
 from credentials import Credentials
 from user import User
 
@@ -59,13 +60,20 @@ class TestUser(unittest.TestCase):
         validate user accounts credentials
         '''
         self.check_user = User.check_user ("tushy","1234")
-        
-         # testing for the user class ends here
-        
-        
-        
+
+        # testing for the user class ends here
+
+
+
         # testing for the credentials class starts here
 
+    class TestCredentials(unittest.TestCase):
+          '''
+    Test class that defines test cases for the credentials class behaviors.
+
+    Args:
+        unittest.TestCase:helps in creating test cases
+    '''
 
 
 
