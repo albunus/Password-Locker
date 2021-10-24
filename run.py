@@ -165,8 +165,9 @@ def main():  # main function
                                 "Here is a list of all your credentials in the application")
                             print('*'*50)
                             if display_credentials():  # display credentials
-                                 for platform in display_credentials():
-                                        print(f"{platform.social_platforms_accounts} Account, username: {platform.user_account_usernames} and password: {platform.user_account_password} \n")
+                                for platform in display_credentials():
+                                        print(
+                                            f"{platform.social_platforms_accounts} Account, username: {platform.user_account_username} and password: {platform.user_account_password} \n")
                             else:
                                 print("No accounts saved!!")
                             print('*'*50)
