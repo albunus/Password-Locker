@@ -1,7 +1,7 @@
 import unittest
-from unittest.case import TestCase
-from credentials import Credentials
 from user import User
+from credentials import Credentials
+
 
 class TestUser(unittest.TestCase):
     '''
@@ -67,25 +67,25 @@ class TestUser(unittest.TestCase):
 
         # testing for the credentials class starts here
 
-    class TestCredentials(unittest.TestCase):
-        '''
-        Test class that defines test cases for the credentials class behaviors.
+class TestCredentials(unittest.TestCase):
+    '''
+    Test class that defines test cases for the credentials class behaviors.
 
-        Args:
-            unittest.TestCase:helps in creating test cases
+    Args:
+        unittest.TestCase:helps in creating test cases
+    '''
+    def setUp(self):
         '''
-        def setUp(self):
-            '''
-            function to have social platforms details before testing
-            '''
-            self.new_credentials = Credentials('twitter', 'aly','tush')
-        def test_init_(self):
-            '''
-            test to see whether the credentials are created
-            '''
-            self.assertEqual(self.new_credentials.social_platforms_accounts, 'twitter')
-            self.assertEqual(self.new_credentials.user_accounts_username, 'aly')
-            self.assertEqual(self.new_credentials.user_accounts_password, 'tush')
+        function to have social platforms details before testing
+        '''
+        self.new_credentials = Credentials('twitter','aly','tush')
+    def test__init__(self):
+        '''
+        test to see whether the credentials are created
+        '''
+        self.assertEqual(self.new_credentials.social_platforms_accounts, 'twitter')
+        self.assertEqual(self.new_credentials.user_accounts_username, 'aly')
+        self.assertEqual(self.new_credentials.user_accounts_password, 'tush')
 
 
 
