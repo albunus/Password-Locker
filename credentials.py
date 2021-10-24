@@ -43,3 +43,6 @@ class Credentials():
             returns the credentials list(all credentials)
         """
         return cls.platform_details
+
+
+
