@@ -103,6 +103,12 @@ class TestCredentials(unittest.TestCase):
         self.new_credentials.delete_credentials()
         self.assertEqual(len(Credentials.platform_details),0)
 
+    def test_find_credentials_by_social_platform_account(self):
+        '''
+        testing finding method
+        '''
+        self.found_credentials = Credentials.find_by_social_platform_account,("twitter")
+
 
 
 if __name__ == '__main__':
