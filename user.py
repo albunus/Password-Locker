@@ -2,7 +2,7 @@ class User:
     '''
     class to create user accounts and save their information
     '''
-    user_list=[]
+    user_Accounts=[]
 
     def __init__(self, first_name, last_name, username, password):
         """
@@ -17,26 +17,26 @@ class User:
         '''
         Function to save a newly created instance
         '''
-        User.user_list.append(self)
+        User.user_Accounts.append(self)
     def delete_user(self):
         '''
         Delete user from the list
         '''
-        User.user_list.remove(self)
+        User.user_Accounts.remove(self)
 
     @classmethod
     def find_user(cls, username):
         """Find user by username"""
-        for user in cls.user_list:
+        for user in cls.user_Accounts:
             if user.username == username:
                 return username
     @classmethod
     def user_exist(cls, username):
         """Check if user exists"""
-        for user in cls.user_list:
+        for user in cls.user_Accounts:
             if user.username == username:
                 return True
-        return False
+            return False
 
     @classmethod
     def check_user(cls, username, password):

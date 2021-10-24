@@ -28,19 +28,19 @@ class TestUser(unittest.TestCase):
         Test to check if the new users info is saved into the users list
         '''
         self.new_user.save_User()
-        self.assertEqual(len(User.user_list), 1)
+        self.assertEqual(len(User.user_Accounts), 1)
 
     def test_delete_user(self):
         """
         check whether the user was removed from the user accounts list
         """
-        self.assertEqual(len(User.user_list), 0)
+        self.assertEqual(len(User.user_Accounts), 0)
         self.new_user.save_User()
-        self.assertEqual(len(User.user_list), 1)
+        self.assertEqual(len(User.user_Accounts), 1)
         self.new_user.delete_user()
-        self.assertEqual(len(User.user_list), 0)
+        self.assertEqual(len(User.user_Accounts), 0)
 
-   
+
 
     def test_find_user(self):
         """
@@ -51,7 +51,13 @@ class TestUser(unittest.TestCase):
             """
         check whether the user account exists in the user list
         """
-            self.found_user = User.user_exist("tushy")
+            self.found_username = User.user_exist("tushy")
+
+    def test_check_user(self):
+        '''
+        validate user accounts credentials
+        '''
+        self.check_user = User.check_user ("tushy","1234")
 
 
 
