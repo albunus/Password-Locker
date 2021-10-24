@@ -1,3 +1,5 @@
+import string
+import random
 class Credentials():
     '''
     A class tha generates users list credentials
@@ -30,9 +32,9 @@ class Credentials():
         '''
             Method that takes in a account_platform and returns a credentials that matches that account_platform.
         '''
-        for credentials in cls.platform_details:
-            if credentials.social_platform_account == social_platform_account:
-                return credentials
+        for details in cls.platform_details:
+            if details.social_platform_account == social_platform_account:
+                return details
         return False
 
     @classmethod
