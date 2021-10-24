@@ -18,3 +18,9 @@ class Credentials():
         method to save platform details
         '''
         Credentials.platform_details.append(self)
+        
+    def delete_credentials(self):
+        '''
+        method that will delete platforms details
+        '''
+        Credentials.platform_details.remove(self)
