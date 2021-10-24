@@ -2,6 +2,10 @@ class User:
     '''
     class to create user accounts and save their information
     '''
+    def tearDown(self):
+    	'''
+		Function to clear the credentials list after every test
+		'''
     user_Accounts=[]
 
     def __init__(self, first_name, last_name, username, password):
