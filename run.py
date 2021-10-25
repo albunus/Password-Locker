@@ -75,7 +75,7 @@ def main():
 			password = input('Enter your password - ').strip()
 			save_user(create_user(first_name,last_name,password))
 			print(" ")
-			print(f'New Account Created for: {first_name}😃😃 {last_name} 😃😃using password: {password}😃😃')
+			print(f'New Account Created for: {first_name}😃😃 {last_name} 😃😃using password: {password}😃😃 now login to proceed' )
 		elif short_code == 'lg':
 			print("-"*60)
 			print(' ')
@@ -99,8 +99,8 @@ def main():
 					elif short_code == 'cc':
 						print(' ')
 						print('Enter your credential details:')
-						nick_name = input('Enter the platform nick\'s name- ').strip()
-						platform_name = input('Enter your platform\'s name - ').strip()
+						nick_name = input('Enter the platform nick\'s name- eg fb  ').strip()
+						platform_name = input('Enter your platform\'s name - eg facebook  ').strip()
 						while True:
 							print(' ')
 							print("-"*60)
@@ -117,7 +117,7 @@ def main():
 							elif psw_choice == 'ex':
 								break
 							else:
-								print('Oops! Wrong option entered. Try again.')
+								print('Oops! Wrong option entered. Try again. 😥  😥 ')
 						save_credential(create_credential(user_name,nick_name,platform_name,password))
 						print(' ')
 						print(f'Credential Created: nick Name: {nick_name} - platform Name: {platform_name} - Password: {password}')
@@ -132,10 +132,10 @@ def main():
 							print(' ')	
 						else:
 							print(' ')
-							print("You don't seem to have any credentials saved yet 😃")
+							print("You don't seem to have any credentials saved yet  😥 😥 ")
 							print(' ')
 
-
+                    
 					elif short_code == 'copy':
 						print(' ')
 						chosen_nick = input('Enter the platform nick name for the credential password to copy: ')
@@ -143,16 +143,17 @@ def main():
 						print('')
 
 					else:
-						print('Oops! Wrong option entered. Try again.')
+						print('Oops! Wrong option entered. Try again. 😥 ')
 
 			else:
 				print(' ')
-				print('Oops! Wrong details entered. Try again or Create an Account.')
+				print('Oops! Wrong details entered. Try again or Create an Account. 😥 ')
 
 		else:
 			print("-"*60)
 			print(' ')
-			print('Oops! Wrong option entered. Try again.')
+			print('Oops! Wrong option entered. Try again. 😥 ')
+
 
 
 
