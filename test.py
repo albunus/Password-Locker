@@ -1,122 +1,136 @@
 import unittest
-from user import User
-from credentials import Credentials
+import pyperclip
+from run import main
+from user import User, Credential
 
 
 class TestUser(unittest.TestCase):
     '''
     Test class that defines test cases for the user class behaviors.
-
     Args:
-        unittest.TestCase:helps in creating test cases
+      unittest.TestCase:helps in creating test cases
     '''
+
     def setUp(self):
         '''
-        Function to create a user account before each test
-        '''
-        self.new_user = User('Dan','tush','tushy','1234')
+    	Function to create a user account before each test
+    	'''
+        self.new_user = User('aly', 'tush', '1234')
 
-    def test_init_(self):
-        '''
-        Test to if check the initialization/creation of user instances is properly done
-        '''
-        self.assertEqual(self.new_user.first_name, 'Dan')
-        self.assertEqual(self.new_user.last_name, 'tush')
-        self.assertEqual(self.new_user.username, 'tushy')
-        self.assertEqual(self.new_user.password, '1234')
+    def test__init__(self):
+	    '''
+		Test to if check the initialization/creation of user instances is properly done
+		'''
+	    self.assertEqual(self.new_user.first_name, 'aly')
+	    self.assertEqual(self.new_user.last_name, 'tush')
+	    self.assertEqual(self.new_user.password, '1234')
 
     def test_save_user(self):
         '''
         Test to check if the new users info is saved into the users list
         '''
-        self.new_user.save_User()
-        self.assertEqual(len(User.user_Accounts), 1)
+        self.new_user.save_user()
+        self.assertEqual(len(User.users_list), 1)
 
-    def test_delete_user(self):
-        """
-        check whether the user was removed from the user accounts list
-        """
-        self.assertEqual(len(User.user_Accounts), 0)
-        self.new_user.save_User()
-        self.assertEqual(len(User.user_Accounts), 1)
-        self.new_user.delete_user()
-        self.assertEqual(len(User.user_Accounts), 0)
-
-
-
-    def test_find_user(self):
-        """
-        check whether the user exists in the user list
-        """
-        self.found_username = User.find_user("tushy")
-    def test_user_exists(self):
-            """
-        check whether the user account exists in the user list
-        """
-            self.found_username = User.user_exist("tushy")
-
-    def test_check_user(self):
-        '''
-        validate user accounts credentials
-        '''
-        self.check_User = User.check_user ('username', 'password')
-
-        # testing for the user class ends here
-
-
-
-        # testing for the credentials class starts here
 
 class TestCredentials(unittest.TestCase):
     '''
     Test class that defines test cases for the credentials class behaviors.
-
     Args:
-        unittest.TestCase:helps in creating test cases
+    unittest.TestCase: helps in creating test cases
     '''
+
+    def test_check_user(self):
+        '''
+        Function to test whether the login in function check_user works as expected
+        '''
+        self.new_user = User('aly','tush','1234')
+        self.new_user.save_user()
+        user2 = User('','dan','1234')
+        user2.save_user()
+
+
+        for user in User.users_list:
+	        if user.first_name == user2.first_name and user.password == user2.password:
+			        current_user = user.first_name
+	    
+
+        self.assertEqual(current_user,Credential.check_user(user2.password,user2.first_name))
     def setUp(self):
-        '''
-        function to have social platforms details before testing
-        '''
-        self.new_credentials = Credentials('twitter','aly','tush')
+	    '''
+		Function to create an account's credentials before each test
+		'''
+	    self.new_credential = Credential('aly','Facebook','tush','1234')
+
     def test__init__(self):
-        '''
-        test to see whether the credentials are created
-        '''
-        self.assertEqual(self.new_credentials.social_platforms_accounts, 'twitter')
-        self.assertEqual(self.new_credentials.user_accounts_username, 'aly')
-        self.assertEqual(self.new_credentials.user_accounts_password, 'tush')
+	    '''
+		Test to if check the initialization/creation of credential instances is properly done
+		'''
+	    self.assertEqual(self.new_credential.user_name,'aly')
+	    self.assertEqual(self.new_credential.site_name,'Facebook')
+	    self.assertEqual(self.new_credential.account_name,'tush')
+	    self.assertEqual(self.new_credential.password,'1234')
 
     def test_save_credentials(self):
-        '''
-        confirm whether platform details are being saved
-        '''
-        self.new_credentials.save_credentials()
-        self.assertEqual(len(Credentials.platform_details),1)
+	    '''
+		Test to check if the new credential info is saved into the credentials list
+		'''
+	    self.new_credential.save_credentials()
+	    twitter = Credential('twi','Twitter','tush','1234')
+	    twitter.save_credentials()
+	    self.assertEqual(len(Credential.credentials_list),2)
 
-    def test_delete_credentials(self):
-        '''
-        confirm whether platforms deatails are being deleted from the saved list
-        '''
-        self.new_credentials.save_credentials()
-        self.assertEqual(len(Credentials.platform_details),1)
-        self.new_credentials.delete_credentials()
-        self.assertEqual(len(Credentials.platform_details),0)
+	# def test_generate_password(self):
+	# 	'''
+	# 	Test to check if the generate password generates 8 character long alphanumeric numbers
+	# 	'''
+	# 	self.twitter = Credential('Twitter','kelvin','')
+	# 	self.twitter.password = generate_password()
+	# 	self.assertEqual()
 
-    def test_find_credentials_by_social_platform_account(self):
-        '''
-        testing finding method
-        '''
-        self.found_credentials = Credentials.find_by_social_platform_account,("twitter")
+    def tearDown(self):
+	    '''
+		Function to clear the credentials list after every test
+		'''
+	    Credential.credentials_list = []
+	    User.users_list = []
 
-    def test_display_all_credentials(self):
-        '''
-        method that returns a list of all contacts saved
-        '''
+    def test_display_credentials(self):
+	    '''
+		Test to check if the display_credentials method, displays the correct credentials.
+		'''
+	    self.new_credential.save_credentials()
+	    twitter = Credential('twi','Twitter','tush','1234')
+	    twitter.save_credentials()
+	    gmail = Credential('gm','Gmail','tush','1234')
+	    gmail.save_credentials()
+	    self.assertEqual(len(Credential.display_credentials(twitter.user_name)),1)
 
-        self.assertEqual(Credentials.display_credentials(),Credentials.platform_details)
+    def test_find_by_site_name(self):
+	    '''
+		Test to check if the find_by_site_name method returns the correct credential
+		'''
+	    self.new_credential.save_credentials()
+	    twitter = Credential('twi','Twitter','tush','1234')
+	    twitter.save_credentials()
+	    credential_exists = Credential.find_by_site_name('Twitter')
+	    self.assertEqual(credential_exists,twitter)
 
-
+    def test_copy_credential(self):
+	    '''
+		Test to check if the copy a credential method copies the correct credential
+		'''
+	    self.new_credential.save_credentials()
+	    twitter = Credential('twi','Twitter','tush','1234')
+	    twitter.save_credentials()
+	    find_credential = None
+	    for credential in Credential.user_credentials_list:
+		        find_credential =Credential.find_by_site_name(credential.site_name)
+		        return pyperclip.copy(find_credential.password)
+	    Credential.copy_credential(self.new_credential.site_name)
+	    self.assertEqual('1234',pyperclip.paste())
+	    print(pyperclip.paste())
 
 if __name__ == '__main__':
-    unittest.main()
+	unittest.main(verbosity=2)
+main()
