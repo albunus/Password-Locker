@@ -58,8 +58,14 @@ class Credential:
         '''
         Function to create a newly created user instance
         '''
-        #global users_list
+
         Credential.credentials_list.append(self)
+    def delete_credentials(self):
+        """
+            deletes saved credential from the user_credentials[]
+        """
+        Credential.credentials_list.append(self)
+        Credential.credentials_list.remove(self)
 
     def generate_password(size=8, char=string.ascii_uppercase+string.ascii_lowercase+string.digits):
         '''

@@ -57,7 +57,7 @@ def copy_credential(nick_name):
 
 def main():
 	print(' ')
-	print('Hello! Welcome to Password Locker.')
+	print(f'Hello! 😃😃Welcome to Password Locker.😃😃😃😃😃😃😃😃😃😃😃')
 	while True:
 		print(' ')
 		print("-"*60)
@@ -75,7 +75,7 @@ def main():
 			password = input('Enter your password - ').strip()
 			save_user(create_user(first_name,last_name,password))
 			print(" ")
-			print(f'New Account Created for: {first_name} {last_name} using password: {password}')
+			print(f'New Account Created for: {first_name}😃😃 {last_name} 😃😃using password: {password}😃😃')
 		elif short_code == 'lg':
 			print("-"*60)
 			print(' ')
@@ -85,7 +85,7 @@ def main():
 			user_exists = verify_user(user_name,password)
 			if user_exists == user_name:
 				print(" ")
-				print(f'Welcome {user_name}. Please choose an option to continue.')
+				print(f'Welcome😃 {user_name}.😃😃😃😃 Please choose an option to continue.')
 				print(' ')
 				while True:
 					print("-"*60)
@@ -99,19 +99,19 @@ def main():
 					elif short_code == 'cc':
 						print(' ')
 						print('Enter your credential details:')
-						nick_name = input('Enter the nick\'s name- ').strip()
+						nick_name = input('Enter the platform nick\'s name- ').strip()
 						platform_name = input('Enter your platform\'s name - ').strip()
 						while True:
 							print(' ')
 							print("-"*60)
-							print('Please choose an option for entering a password: \n ep-enter existing password \n gp-generate a password \n ex-exit')
+							print('Please choose an option for entering a password: \n 1- create your password  \n 2-generate a password \n ex-exit')
 							psw_choice = input('Enter an option: ').lower().strip()
 							print("-"*60)
-							if psw_choice == 'ep':
+							if psw_choice == '1':
 								print(" ")
-								password = input('Enter your password: ').strip()
+								password = input('Enter your password: 😃😃').strip()
 								break
-							elif psw_choice == 'gp':
+							elif psw_choice == '2':
 								password = generate_password()
 								break
 							elif psw_choice == 'ex':
@@ -120,7 +120,7 @@ def main():
 								print('Oops! Wrong option entered. Try again.')
 						save_credential(create_credential(user_name,nick_name,platform_name,password))
 						print(' ')
-						print(f'Credential Created: nick Name: {nick_name} - Account Name: {platform_name} - Password: {password}')
+						print(f'Credential Created: nick Name: {nick_name} - platform Name: {platform_name} - Password: {password}')
 						print(' ')
 					elif short_code == 'dc':
 						print(' ')
@@ -128,29 +128,32 @@ def main():
 							print('Here is a list of all your credentials')
 							print(' ')
 							for credential in display_credentials(user_name):
-								print(f'nick Name: {credential.nick_name} - Account Name: {credential.platform_name} - Password: {credential.password}')
+								print(f'platform nick Name: {credential.nick_name} 😃- platform Name: {credential.platform_name} 😃- Password: {credential.password}')
 							print(' ')	
 						else:
 							print(' ')
-							print("You don't seem to have any credentials saved yet")
+							print("You don't seem to have any credentials saved yet 😃")
 							print(' ')
+
+
 					elif short_code == 'copy':
 						print(' ')
-						chosen_nick = input('Enter the nick name for the credential password to copy: ')
+						chosen_nick = input('Enter the platform nick name for the credential password to copy: ')
 						copy_credential(chosen_nick)
 						print('')
+
 					else:
 						print('Oops! Wrong option entered. Try again.')
 
-			else: 
+			else:
 				print(' ')
-				print('Oops! Wrong details entered. Try again or Create an Account.')		
-		
+				print('Oops! Wrong details entered. Try again or Create an Account.')
+
 		else:
 			print("-"*60)
 			print(' ')
 			print('Oops! Wrong option entered. Try again.')
-				
+
 
 
 
