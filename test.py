@@ -67,8 +67,8 @@ class TestCredentials(unittest.TestCase):
 		Test to if check the initialization/creation of credential instances is properly done
 		'''
 	    self.assertEqual(self.new_credential.user_name,'aly')
-	    self.assertEqual(self.new_credential.site_name,'Facebook')
-	    self.assertEqual(self.new_credential.account_name,'tush')
+	    self.assertEqual(self.new_credential.nick_name,'Facebook')
+	    self.assertEqual(self.new_credential.platform_name,'tush')
 	    self.assertEqual(self.new_credential.password,'1234')
 
     def test_save_credentials(self):
@@ -106,14 +106,14 @@ class TestCredentials(unittest.TestCase):
 	    gmail.save_credentials()
 	    self.assertEqual(len(Credential.display_credentials(twitter.user_name)),1)
 
-    def test_find_by_site_name(self):
+    def test_find_by_nick_name(self):
 	    '''
 		Test to check if the find_by_site_name method returns the correct credential
 		'''
 	    self.new_credential.save_credentials()
 	    twitter = Credential('twi','Twitter','tush','1234')
 	    twitter.save_credentials()
-	    credential_exists = Credential.find_by_site_name('Twitter')
+	    credential_exists = Credential.find_by_nick_name('Twitter')
 	    self.assertEqual(credential_exists,twitter)
 
     def test_copy_credential(self):
@@ -125,9 +125,9 @@ class TestCredentials(unittest.TestCase):
 	    twitter.save_credentials()
 	    find_credential = None
 	    for credential in Credential.user_credentials_list:
-		        find_credential =Credential.find_by_site_name(credential.site_name)
+		        find_credential =Credential.find_by_nick_name(credential.nick_name)
 		        return pyperclip.copy(find_credential.password)
-	    Credential.copy_credential(self.new_credential.site_name)
+	    Credential.copy_credential(self.new_credential.nick_name)
 	    self.assertEqual('1234',pyperclip.paste())
 	    print(pyperclip.paste())
 

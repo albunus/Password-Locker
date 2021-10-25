@@ -43,15 +43,15 @@ class Credential:
             if (user.first_name ==first_name and user.password == password):
                 current_user = user.first_name
             return current_user
-    def __init__(self,user_name,site_name,account_name,password):
+    def __init__(self,user_name,nick_name,platform_name,password):
         '''
         Method to define if the properties for each user object will hold.
         '''
 
         #instance variables
         self.user_name = user_name
-        self.site_name = site_name
-        self.account_name = account_name
+        self.nick_name = nick_name
+        self.platform_name = platform_name
         self.password = password
 
     def save_credentials(self):
@@ -80,18 +80,18 @@ class Credential:
         return user_credentials_list
 
     @classmethod
-    def find_by_site_name(cls,site_name):
+    def find_by_nick_name(cls,nick_name):
         '''
         method that takes in a site name and returns a credential that matches that site name.
         '''
         for credential in cls.credentials_list:
-            if credential.site_name == site_name:
+            if credential.nick_name == nick_name:
                 return credential
     @classmethod
-    def copy_credential(cls,site_name):
+    def copy_credential(cls,nick_name):
         '''
         Class method that copies a credentials information after the credentials site name is entered
         '''
-        find_credential = Credential.find_by_site_name(site_name)
+        find_credential = Credential.find_by_nick_name(nick_name)
         return pyperclip.copy(find_credential.password)
 
