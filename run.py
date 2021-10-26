@@ -89,7 +89,7 @@ def main():
 				print(' ')
 				while True:
 					print("-"*60)
-					print('Navigation codes: \n cc-Create a Credential \n dc-Display Credentials \n copy-Copy Password \n ex-Exit')
+					print('Navigation codes: \n cc-Create a Credential \n dc-Display Credentials \n copy-Copy Password \n del-delete \n  ex-Exit')
 					short_code = input('Enter a choice: ').lower().strip()
 					print("-"*60)
 					if short_code == 'ex':
@@ -134,8 +134,12 @@ def main():
 							print(' ')
 							print("You don't seem to have any credentials saved yet  😥 😥 ")
 							print(' ')
-
-                    
+					elif short_code == "del":
+            					print("Enter the account name of the Credentials you want to delete")
+            					check_user = input().lower()
+            					if check_user(save_credential):
+               			 			check_credential = check_user(save_credential) 
+						
 					elif short_code == 'copy':
 						print(' ')
 						chosen_nick = input('Enter the platform nick name for the credential password to copy: ')
